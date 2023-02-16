@@ -38,9 +38,17 @@ v12.11.1
 $ npm -v
 6.11.3
 ```
-### Install Jest, Babel, and ESLint
+### Installing Jest, Babel, and ESLint
 in project directory:
 * Installing Jest: `npm install --save-dev jest`
-    Install Babel using: npm install --save-dev babel-jest @babel/core @babel/preset-env
-    Install ESLint using: npm install --save-dev eslint
-
+* Installing Babel: `npm install --save-dev babel-jest @babel/core @babel/preset-env`
+* Installing ESLint: `npm install --save-dev eslint`
+## Configuration files
+`package.json`
+Click to show/hide file contents
+`babel.config.js`
+Click to show/hide file contents
+`.eslintrc.js`
+Click to show/hide contents
+### Finally...
+Run `npm install` from the terminal of the project folder to install all necessary project dependencies.
