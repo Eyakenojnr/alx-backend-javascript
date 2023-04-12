@@ -7,11 +7,12 @@ interface Teacher {
     [sample: string]: any,
 }
 
+// <Directors> interface that extends to <Teacher>
 interface Directors extends Teacher {
     numberOfReports: number,
 }
 
-const displayTeacher = (firstName:string, lastName:string) : string => `${firstName.charAt(0)}. ${lastName}`; // print Teacher
+const printTeacher = (firstName:string, lastName:string) : string => `${firstName.charAt(0)}. ${lastName}`;
 
 class StudentClass {
     firstName: string;
@@ -22,9 +23,9 @@ class StudentClass {
         this.lastName = lastName;
     }
 
-    printName = () : string => this.firstName;
+    workOnHomework = () : string => 'Currently working';
 
-    workOnAssignment = () : string => 'Working presently';
+    displayName = () : string => this.firstName;
 }
 
 interface StudentConstructor {
@@ -32,5 +33,5 @@ interface StudentConstructor {
 }
 
 const student = new StudentClass("Ayodeji", "David");
-console.log(student.printName())
-console.log(student.workOnAssignment())
+console.log(student.displayName())
+console.log(student.workOnHomework())
