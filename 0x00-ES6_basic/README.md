@@ -62,4 +62,146 @@ export default function getSumOfHoods(initialNumber, expansion1989, expansion201
 }
 ```
 
-### []()
+### [`4-rest-parameter.js`]()
+Modified the function below to return the number of arguments passed to it using rest parameter syntax
+```
+export default function returnHowManyArguments() {
+
+}
+```
+E.g:
+```
+> returnHowManyArguments("Hello", "Holberton", 2020);
+3
+>
+```
+
+### [`5-spread-operator.js`]()
+Used spread syntax to concatenate 2 arrays and each character of a string by modifying the function below.
+```
+export default function concatArrays(array1, array2, string) {
+}
+```
+
+### [`6-string-interpolation.js`]()
+Rewrote the return statement to use a template literal.
+```
+export default function getSanFranciscoDescription() {
+  const year = 2017;
+  const budget = {
+    income: '$119,868',
+    gdp: '$154.2 billion',
+    capita: '$178,479',
+  };
+
+  return 'As of ' + year + ', it was the seventh-highest income county in the United States'
+        / ', with a per capita personal income of ' + budget.income + '. As of 2015, San Francisco'
+        / ' proper had a GDP of ' + budget.gdp + ', and a GDP per capita of ' + budget.capita + '.';
+}
+```
+
+### [`7-getBudgetObject.js`]()
+Since the keys and variable names are the same, the function is modified to use the keyname instead.
+```
+export default function getBudgetObject(income, gdp, capita) {
+  const budget = {
+    income: income,
+    gdp: gdp,
+    capita: capita,
+  };
+
+  return budget;
+}
+```
+
+### [`8-getBudgetCurrentYear.js`]()
+Modified the `getBudgetForCurrentYear` function to use ES6 computed property names on the `budget` object.
+```
+function getCurrentYear() {
+  const date = new Date();
+  return date.getFullYear();
+}
+
+export default function getBudgetForCurrentYear(income, gdp, capita) {
+  const budget = {};
+
+  budget[`income-${getCurrentYear()}`] = income;
+  budget[`gdp-${getCurrentYear()}`] = gdp;
+  budget[`capita-${getCurrentYear()}`] = capita;
+
+  return budget;
+}
+```
+
+### [`9-getFullBudget.js`]()
+Rewrote `getFullBudgetObject` to use ES6 method properties in the `fullBudget` object
+```
+import getBudgetObject from './7-getBudgetObject.js';
+
+export default function getFullBudgetObject(income, gdp, capita) {
+  const budget = getBudgetObject(income, gdp, capita);
+  const fullBudget = {
+    ...budget,
+    getIncomeInDollars: function (income) {
+      return `$${income}`;
+    },
+    getIncomeInEuros: function (income) {
+      return `${income} euros`;
+    },
+  };
+
+  return fullBudget;
+}
+```
+
+### [`10-loops.ja`]()
+Rewrote the function below to use ES6 `for...of` operator
+```
+export default function appendToEachArrayValue(array, appendString) {
+  for (var idx in array) {
+    var value = array[idx];
+    array[idx] = appendString + value;
+  }
+
+  return array;
+}
+```
+
+### [`11-createEmployeesObject.js`]()
+Function `createEmployeessObject` that receives two arguments:
+- `departmentName` (String)
+- `employees` (Array of Strings)
+And returns an object with the format:
+```
+{
+     $departmentName: [
+          $employees,
+     ],
+}
+```
+
+### [`12-createReportObject.js`]()
+Function `createReportObject` whose parameter `employeesList` is the return value of previous function `createEmployeesObject`.
+
+`createReportObject` returns an object containing the key `allEmployees` and a method property `getNumberOfDepartments`.
+
+`allEmployees` is a key that maps to an object containing the department name and a list of all employees in that department.
+
+The method property receives `employeesList` and returns the number of departments.
+```
+{
+  allEmployees: {
+     engineering: [
+          'John Doe',
+          'Guillaume Salva',
+     ],
+  },
+};
+```
+
+### [`100-createIteratorObject.js`]()
+`createIteratorObject` function takes as argument a report Object created with previous function `createReportObject`.
+This function returns an iterator that goes through every employee in every department.
+
+### [`101-iterateThroughObject.js`]()
+Function `iterateThroughObject` whose parameter `reportWithIterator` is the return value from `createIteratorObject`.
