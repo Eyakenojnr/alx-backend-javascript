@@ -24,33 +24,42 @@ This concept was looked at for this project:
 - Object creation and their properties in ES6
 - Iterators and for-of loops
 
-## Setup
-### Install NodeJS 12.11.x
-(in home directory)
-```
-curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
-sudo bash nodesource_setup.sh
-sudo apt install nodejs -y
-```
-```
-$ nodejs -v
-v12.11.1
-$ npm -v
-6.11.3
-```
-### Installing Jest, Babel, and ESLint
-in project directory:
-* Installing Jest: `npm install --save-dev jest`
-* Installing Babel: `npm install --save-dev babel-jest @babel/core @babel/preset-env`
-* Installing ESLint: `npm install --save-dev eslint`
-## Configuration files
-`package.json`
-Click to show/hide file contents
+## Tasks
+### [`0-constants.js`]()
+Modified
+* `taskFirst` function to instantiate variables using `const`
+* `taskNext` function to instantiate variables using `let`
 
-`babel.config.js`
-Click to show/hide file contents
+### [`1-block-scoped.js`]()
+Modified variables in `taskBlock` function so that variables aren't overwritten inside the conditional block.
 
-`.eslintrc.js`
-Click to show/hide contents
-### Finally...
-Run `npm install` from the terminal of the project folder to install all necessary project dependencies.
+### [`2-arrow.js`]()
+Rewrote the standard function below to use ES6's arrow syntax on the function `add`
+```
+export default function getNeighborhoodsList() {
+  this.sanFranciscoNeighborhoods = ['SOMA', 'Union Square'];
+
+  const self = this;
+  this.addNeighborhood = function add(newNeighborhood) {
+    self.sanFranciscoNeighborhoods.push(newNeighborhood);
+    return self.sanFranciscoNeighborhoods;
+  };
+}
+```
+
+### [`3-default-parameter.js`]()
+Condensed internals of the function below to 1 line - without changing the name of each function/variable
+```
+export default function getSumOfHoods(initialNumber, expansion1989, expansion2019) {
+  if (expansion1989 === undefined) {
+    expansion1989 = 89;
+  }
+
+  if (expansion2019 === undefined) {
+    expansion2019 = 19;
+  }
+  return initialNumber + expansion1989 + expansion2019;
+}
+```
+
+### []()
