@@ -1,7 +1,7 @@
-/// <reference path="./Teacher.ts"/>
-/// <reference path="./Cpp.ts" />
-/// <reference path="./Java.ts" />
-/// <reference path="./React.ts" />
+/// <reference path="./subjects/Teacher.ts"/>
+/// <reference path="./subjects/Cpp.ts" />
+/// <reference path="./subjects/Java.ts" />
+/// <reference path="./subjects/React.ts" />
 
 console.log('C++');
 // Set cTeacher as teacher and call two methods printing the string they return
