@@ -1,38 +1,69 @@
 interface DirectorInterface {
-    workFromHome(): string;
-    getCoffeeBreak(): string;
-    workDirectorTasks(): string;   
+  workFromHome(): string;
+  getCoffeeBreak(): string;
+  workDirectorTasks(): string;
 }
 
 interface TeacherInterface {
-    workFromHome(): string;
-    getCoffeeBreak(): string;
-    workTeacherTasks(): string;
+  workFromHome(): string;
+  getCoffeeBreak(): string;
+  workTeacherTasks(): string;
 }
 
 class Director implements DirectorInterface {
-    workFromHome = () : string => 'Working from home';
-    getCoffeeBreak = () : string => 'Getting a coffee break';
-    workDirectorTasks = () : string => 'Getting to director tasks';
+  workFromHome(): string {
+    return 'Working from home';
+  }
+
+  getCoffeeBreak(): string {
+    return 'Getting a coffee break';
+  }
+
+  workDirectorTasks(): string {
+    return 'Getting to director tasks';
+  }
 }
 
 class Teacher implements TeacherInterface {
-    workFromHome = () : string => 'Cannot work from home';
-    getCoffeeBreak = () : string => 'Cannot have a break';
-    workTeacherTasks = () : string => 'Getting to work';
+  workFromHome(): string {
+    return 'Cannot work from home';
+  }
+
+  getCoffeeBreak(): string {
+    return 'Cannot have a break';
+  }
+
+  workTeacherTasks(): string {
+    return 'Getting to work';
+  }
 }
 
-export const createEmployee = (salary: number | string): Teacher | Director => Number(salary) < 500 ? new Teacher() : new Director();
-
-export const isDirector = (employee: Teacher | Director): boolean => employee instanceof Director;
-
-export const executeWork = (employee: Teacher | Director): void => {
-  const work = employee instanceof Teacher? employee.workTeacherTasks() : employee.workDirectorTasks();
-  console.log(work)
+function createEmployee(salary: number | string):
+  Director | Teacher {
+  if (typeof salary === 'number' && salary < 500) {
+    return new Teacher();
+  }
+  return new Director();
 }
 
-type Subjects = 'Math' | 'History';
-
-export const teachClass = (todayClass: Subjects) : string => {
-  return todayClass === 'Math' ? 'Teaching Math': 'Teaching History';
+// Used as a type predicate to check if employee is a director
+function isDirector(employee: Director | Teacher): boolean {
+  return employee instanceof Director;
 }
+
+function executeWork(employee: Director | Teacher): void {
+  if (employee instanceof Director) {
+    console.log(employee.workDirectorTasks());
+  } else if (employee instanceof Teacher) {
+    console.log(employee.workTeacherTasks());
+  }
+}
+
+type Subjects = 'Math' | 'History'; // String literal type
+
+function teachClass(todayClass: Subjects): void {
+ console.log(todayClass === 'Math' ? 'Teaching Math' : 'Teaching History');
+}
+
+teachClass('Math');
+teachClass('History');
